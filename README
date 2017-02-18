@@ -1,0 +1,37 @@
+This README is for a Windows version of the script.
+
+HOPS (Hosts from Putty Sessions) can generate hosts file base on your putty config in Windows registry.
+As usual, there are some restrictions applied:
+
+- needed modules:
+
+    Win32;
+    Win32::TieRegistry;
+
+- you MUST have perl installed. Active State or Strawberry Perl should be fine.
+- you also have to manually edit the script and edit the 'user specific' section at the beginning of the script:
+
+    my $hostsfile = "path/to/hosts";
+
+- your Putty sessions MUST conform to these rules:
+
+    hostname (IP address) username [...]
+
+    for e.g. localhost (127.0.0.1) oracle
+
+    Otherwise it won't get picked to be processed into the hosts file.
+    If username is omitted that will happen too.
+
+- there also should be a "# Oracle" section in your hosts file, like this:
+
+    # Oracle
+    ... hosts go here ...
+
+Help message:
+
+	HOPS - Hosts from Putty sessions.
+
+        hops.pl [-gh]
+
+        -g - generate hosts file.
+        -h - print this message.
